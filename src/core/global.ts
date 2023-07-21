@@ -6,3 +6,7 @@ function getGlobal():Window{
     return window as any as Window
 }
 
+
+export {
+    _global
+}

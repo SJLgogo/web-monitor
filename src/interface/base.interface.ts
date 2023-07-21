@@ -7,10 +7,18 @@ export interface Options{
 }
 
 export interface Window {
-    __webSee__: {
+  chrome: {
+    app: {
       [key: string]: any;
     };
-  }
+  };
+  history: any;
+  addEventListener: any;
+  innerWidth: any;
+  innerHeight: any;
+  onpopstate: any;
+  performance: any;
+}
 
 export interface UserBehaviorData{
     time:number;  // 发生的时间
