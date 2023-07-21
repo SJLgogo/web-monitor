@@ -1,8 +1,8 @@
-import { Options } from "../interface/option.interface";
+import { addHandeler } from "../core/handle";
+import { Options } from "../interface/base.interface";
+import { EVENTTYPES } from "../interface/enum";
 
 export class MonitorSdk{
-
-    private initialized:boolean = false
 
     constructor(options:Options){
         this.init(options)
@@ -11,12 +11,23 @@ export class MonitorSdk{
 
     // 初始化sdk
     init(options:any): void {
-        if(options.apiKey && !options.userId){
-            return console.error(`缺少配置项:${!options.apiKey} ? 'userId' : 'apiKey' `)
+        if(!options.apiKey || !options.dsn){
+            return console.error(`缺少配置项:${!options.apiKey} ? 'dsn' : 'apiKey' `)
         }
-        
-        this.initialized = true;
+        this.registerEvent()
     }
+
+
+    registerEvent():void{
+        addHandeler({
+            callback:(error:any)=>{
+
+            },
+            type: EVENTTYPES.ERROR
+        })
+    }
+
+
 
 
 }
