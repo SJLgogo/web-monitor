@@ -1,6 +1,6 @@
-import { Options } from "../interface/option.interface";
+import { Options } from "../interface/base.interface";
 
 export function handleOptions(paramOptions: Options): void {
-    // setSilentFlag 给全局添加已设置的标识，防止重复设置
-    // setSilentFlag(paramOptions);
+    // setSilentFlag 
+    // setSilentFlag(paramOptions); 给全局添加已设置的参数
   }
