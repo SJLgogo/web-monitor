@@ -12,12 +12,7 @@ export interface Window {
       [key: string]: any;
     };
   };
-  history: any;
-  addEventListener: any;
-  innerWidth: any;
-  innerHeight: any;
-  onpopstate: any;
-  performance: any;
+  location:any;
 }
 
 export interface UserBehaviorData{

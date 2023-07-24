@@ -23,3 +23,8 @@ export function nativeTryCatch(fn: any, errorFn?: any): void {
     }
   }
   
+
+  /** 获取当前时间戳 */
+  export function getTimestamp():number{
+    return Date.now()
+  }

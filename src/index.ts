@@ -1,3 +1,4 @@
+import { handleEvents } from "./core/handleEvents";
 import { MonitorSdk } from "./sdk/monitor-sdk";
 
-export default MonitorSdk
+export  {MonitorSdk,handleEvents}
