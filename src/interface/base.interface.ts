@@ -32,6 +32,22 @@ export interface EventHandler{
     type:EVENTTYPES
 }
   
+export interface Window {
+  chrome: {
+    app: {
+      [key: string]: any;
+    };
+  };
+  history: any;
+  addEventListener: any;
+  innerWidth: any;
+  innerHeight: any;
+  onpopstate: any;
+  performance: any;
+  __webSee__: {
+    [key: string]: any;
+  };
+}
 
 
 

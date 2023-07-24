@@ -11,7 +11,7 @@ export class MonitorSdk{
 
 
     // 初始化sdk
-    init(options:any): void {
+    private init(options:any): void {
         if(!options.apiKey || !options.dsn){
             return console.error(`缺少配置项:${!options.apiKey} ? 'dsn' : 'apiKey' `)
         }
