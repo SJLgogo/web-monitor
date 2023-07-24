@@ -9,11 +9,11 @@ export class MonitorSdk{
         this.init(options)
     }
 
-
     // 初始化sdk
     private init(options:any): void {
+        console.log(options , !options.apiKey , !options.dsn );
         if(!options.apiKey || !options.dsn){
-            return console.error(`缺少配置项:${!options.apiKey} ? 'dsn' : 'apiKey' `)
+             console.error(`缺少必填配置项:${!options.apiKey} ? 'dsn' : 'apiKey' `)
         }
         this.registerEvent()
     }
