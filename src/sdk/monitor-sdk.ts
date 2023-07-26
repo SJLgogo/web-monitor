@@ -1,11 +1,10 @@
-import { addHandeler } from "../core/handle";
-import { handleEvents } from "../core/handleEvents";
-import { Options } from "../interface/base.interface";
-import { EVENTTYPES } from "../interface/enum";
+import { handleOptions } from "../core/option";
+import { setupReplace } from "../core/setupReplace";
+import { InitOptions } from "../interface/base.interface";
 
 export class MonitorSdk{
 
-    constructor(options:Options){
+    constructor(options:InitOptions){
         this.init(options)
     }
 
@@ -14,17 +13,9 @@ export class MonitorSdk{
         if(!options.apikey || !options.dsn){
             return console.error(`缺少必填配置项:${!options.apiKey} ? 'dsn' : 'apiKey' `)
         }
-        this.registerEvent()
-    }
-
-
-    registerEvent():void{
-        addHandeler({
-            callback:(error:any)=>{
-                handleEvents.handleError(error)
-            },
-            type: EVENTTYPES.ERROR
-        })
+          // 初始化配置
+        handleOptions(options);
+        setupReplace()
     }
 
 

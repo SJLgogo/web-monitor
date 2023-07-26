@@ -1,6 +1,8 @@
-import { Options } from "../interface/base.interface";
+import { InitOptions } from "../interface/base.interface";
+import { transportData } from "./transportData";
 
-export function handleOptions(paramOptions: Options): void {
-    // setSilentFlag 
-    // setSilentFlag(paramOptions); 给全局添加已设置的参数
-  }
+export function handleOptions(paramOptions: InitOptions): void {
+
+      // transportData 配置上报的信息
+      transportData.bindOptions(paramOptions);
+}
