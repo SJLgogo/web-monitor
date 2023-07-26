@@ -4,10 +4,16 @@ import { handleEvents } from "./handleEvents"
 
 export function setupReplace(){
 
-    // 捕获错误
     addReplaceHandler({
         callback:(error:any)=>{
             handleEvents.handleError(error)
+        },
+        type: EVENTTYPES.ERROR
+    })
+
+    addReplaceHandler({
+        callback:(error:any)=>{
+            handleEvents.handleHttpError(error , EVENTTYPES.XHR)
         },
         type: EVENTTYPES.ERROR
     })

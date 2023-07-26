@@ -1,4 +1,3 @@
-import { handleEvents } from "./core/handleEvents";
-import { MonitorSdk } from "./sdk/monitor-sdk";
+import { MonitorSdk, handleAngularError, handleHttpError } from "./sdk/monitor-sdk";
 
-export  {MonitorSdk,handleEvents}
+export  {MonitorSdk , handleAngularError , handleHttpError} 

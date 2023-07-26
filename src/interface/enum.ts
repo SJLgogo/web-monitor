@@ -5,5 +5,7 @@ export enum STATUS_CODE {
 
 export enum EVENTTYPES{
     ERROR = 'error',
+    RESOURCE = 'resource',
+    XHR='ehr'
 }
   

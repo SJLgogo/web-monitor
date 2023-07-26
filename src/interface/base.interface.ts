@@ -26,6 +26,15 @@ export interface EventHandler{
     callback:Function;
     type:EVENTTYPES
 }
+
+export interface ErrorTarget {
+  target?: {
+    localName?: string;
+  };
+  error?: any;
+  message?: string;
+  name?:string
+}
   
 
 

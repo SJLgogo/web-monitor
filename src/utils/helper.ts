@@ -1,3 +1,4 @@
+import { _global } from "../core/global";
 
 /**
  * 事件监听
@@ -45,4 +46,11 @@ export function nativeTryCatch(fn: any, errorFn?: any): void {
 
   export function typeofAny(target: any): string {
     return Object.prototype.toString.call(target).slice(8, -1).toLowerCase();
+  }
+
+
+  
+  /** 页面href */
+  export function getLocationHref():string{
+    return _global.location.href
   }
