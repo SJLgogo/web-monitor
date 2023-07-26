@@ -1,6 +1,8 @@
+import { handleEvents } from "../core/handleEvents";
 import { handleOptions } from "../core/option";
 import { setupReplace } from "../core/setupReplace";
-import { InitOptions } from "../interface/base.interface";
+import { ErrorTarget, InitOptions } from "../interface/base.interface";
+import { EVENTTYPES } from "../interface/enum";
 
 export class MonitorSdk{
 
@@ -13,12 +15,20 @@ export class MonitorSdk{
         if(!options.apikey || !options.dsn){
             return console.error(`缺少必填配置项:${!options.apiKey} ? 'dsn' : 'apiKey' `)
         }
-          // 初始化配置
+        // 初始化配置
         handleOptions(options);
         setupReplace()
     }
 
-
-
-
 }
+
+// 处理angular报错
+export function handleAngularError(err:ErrorTarget):void{
+    handleEvents.handleError(err)
+}       
+
+
+// 处理angular请求
+export function handleHttpError(err:ErrorTarget):void{
+    handleEvents.handleHttpError(err , EVENTTYPES.XHR)
+}     

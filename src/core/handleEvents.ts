@@ -3,30 +3,46 @@ import { getTimestamp } from '../utils/helper';
 import { EVENTTYPES } from '../interface/enum';
 import { _global } from './global';
 import { transportData } from './transportData';
+import { ErrorTarget } from '../interface/base.interface';
+import { httpTransform, resourceTransform } from './transformData';
 
 export const handleEvents = {
 
-    /** 处理前端错误 */
-    handleError:(err:any)=>{
-      const target = err.target;
+    handleError:(err:ErrorTarget)=>{
+      const target:any = err.target;
+
+      if(err?.name == "HttpErrorResponse"){
+        return 
+        return handleEvents.handleHttpError(err , EVENTTYPES.XHR)
+      }
+
+      // 静态资源加载错误
+      if(target?.localName){
+        const data = resourceTransform(target);
+        return transportData.send({
+          ...data,
+          type: EVENTTYPES.RESOURCE,
+        });
+      }
+
       if(!target){
-        const stackFrame = ErrorStackParser.parse(err)[0];
-        const { columnNumber, lineNumber } = stackFrame;
+        const stackFrame = ErrorStackParser.parse(err as Error)[0];
+        const { fileName , columnNumber, lineNumber } = stackFrame;
         const errorData = {
           type:EVENTTYPES.ERROR,
           time: getTimestamp(),
           message: err.message,
-          url:_global.location.href,
+          url:fileName,
           line: lineNumber,
           column: columnNumber,
         };
-        transportData.send(errorData)
-
+        return transportData.send(errorData)
       }
+    },
 
-   
+    // 接口请求错误
+    handleHttpError:(data:any , type:EVENTTYPES)=>{
+      const result = httpTransform(data);
     }
-    
-
 }
 

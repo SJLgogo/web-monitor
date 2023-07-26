@@ -17,6 +17,7 @@ function replace(type:EVENTTYPES){
         case EVENTTYPES.ERROR:
             listenError()
             break;
+            
         default:
             break;
     }
