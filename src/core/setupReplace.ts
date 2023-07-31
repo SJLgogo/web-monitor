@@ -15,6 +15,6 @@ export function setupReplace(){
         callback:(error:any)=>{
             handleEvents.handleHttpError(error , EVENTTYPES.XHR)
         },
-        type: EVENTTYPES.ERROR
+        type: EVENTTYPES.XHR
     })
 }

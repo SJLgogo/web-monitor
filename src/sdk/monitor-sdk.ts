@@ -19,16 +19,4 @@ export class MonitorSdk{
         handleOptions(options);
         setupReplace()
     }
-
 }
-
-// 处理angular报错
-export function handleAngularError(err:ErrorTarget):void{
-    handleEvents.handleError(err)
-}       
-
-
-// 处理angular请求
-export function handleHttpError(err:ErrorTarget):void{
-    handleEvents.handleHttpError(err , EVENTTYPES.XHR)
-}     

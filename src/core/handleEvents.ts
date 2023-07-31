@@ -12,7 +12,6 @@ export const handleEvents = {
       const target:any = err.target;
 
       if(err?.name == "HttpErrorResponse"){
-        return 
         return handleEvents.handleHttpError(err , EVENTTYPES.XHR)
       }
 
@@ -43,6 +42,7 @@ export const handleEvents = {
     // 接口请求错误
     handleHttpError:(data:any , type:EVENTTYPES)=>{
       const result = httpTransform(data);
+      transportData.send({ ...result, type });
     }
 }
 
