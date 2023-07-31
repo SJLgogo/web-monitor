@@ -5,6 +5,7 @@ import { _global } from './global';
 import { transportData } from './transportData';
 import { ErrorTarget } from '../interface/base.interface';
 import { httpTransform, resourceTransform } from './transformData';
+import { getErrorUid, hashMapExist } from '../utils/browser';
 
 export const handleEvents = {
 
@@ -35,7 +36,12 @@ export const handleEvents = {
           line: lineNumber,
           column: columnNumber,
         };
-        return transportData.send(errorData)
+        const hash: string = getErrorUid(
+          `${EVENTTYPES.ERROR}-${err.message}-${fileName}-${columnNumber}`
+        );
+        if (!hashMapExist(hash)) {
+          return transportData.send(errorData);
+        }
       }
     },
 
